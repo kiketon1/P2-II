@@ -1,0 +1,33 @@
+$ancho: 21rem;
+#loginScreen {
+    margin: auto;
+    width: $ancho;
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .content {
+        img {
+            margin: 4rem auto;
+            width: $ancho;
+        }
+        .accessButtons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            #mainMethod {
+                min-width: $ancho - 3;
+            }
+            .accessButtonsSecondary {
+                min-width: $ancho - 3;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
+    }
+    footer {
+        margin: 0;
+    }
+}

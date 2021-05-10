@@ -1,0 +1,150 @@
+    //Establecer variables globales.
+    $bgcolor: #6C0676;
+    $botonPrincipalColor: #E91CF8;
+    $botonColor: #2991f1;
+    $cajaColor: #333333;
+    $cajaShadow: #383636;
+    $colorGris: #C1C1C1;
+    $espaciado: 1rem;
+    $hoverdifference: 10%;
+    body {
+        overflow-x: hidden;
+        // Determinar que la pagina web ocupe toda la pantalla como mínimo.
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+        // Establecer colores que aplicar a todo el sistema.
+        background-color: $bgcolor;
+        font-family: 'Inter';
+        color: white;
+        margin: 0rem 2rem;
+        h1 {
+            font-size: 2.75rem;
+            margin: 0 0 1rem 0;
+        }
+        h2,
+        h3 {
+            margin: 0;
+        }
+    }
+    
+    button {
+        padding: ($espaciado/2) $espaciado;
+        margin-bottom: $espaciado;
+        color: white;
+        border: 1px solid transparent;
+        font-weight: bold;
+        border-radius: 2.313rem;
+        // Animación.
+        moz-transition: all .4s ease-in-out;
+        -o-transition: all .4s ease-in-out;
+        -webkit-transition: all .4s ease-in-out;
+        transition: all .4s ease-in-out;
+        &:hover {
+            cursor: pointer;
+            color: white;
+            moz-transition: all .4s ease-in-out;
+            -o-transition: all .4s ease-in-out;
+            -webkit-transition: all .4s ease-in-out;
+            transition: all .4s ease-in-out;
+        }
+    }
+    
+    .textgris {
+        color: $colorGris;
+    }
+    
+    .pantalla {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+    
+    .botonPrincipal {
+        background: $botonPrincipalColor;
+        font-size: 1.05rem;
+        &:hover {
+            background: lighten($botonPrincipalColor, $hoverdifference);
+        }
+    }
+    
+    .botonSecundario {
+        background: $botonColor;
+        font-size: 0.8rem;
+        &:hover {
+            background: lighten($botonColor, $hoverdifference);
+        }
+    }
+    
+    //Para atraer la atencion de los usuarios y contrastar, agrupamos el contenido en divs
+    .caja {
+        background-color: $cajaColor;
+        border-radius: 0.938rem;
+        box-shadow: 0.35rem 0.25rem $cajaShadow;
+        h2,
+        p,
+        h3 {
+            padding: ($espaciado/1.5) ($espaciado*1.5);
+        }
+        h2 {
+            padding: 1.5rem;
+        }
+    }
+    
+    //Principales secciones de las diferentes pantallas: atributos comunes para seguir diseño consistente
+    .content {
+        //set footer always at bot
+        min-height: 79.5vh;
+    }
+    
+    header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 5vh;
+        margin-top: $espaciado;
+        font-weight: bold;
+        font-size: 1.25rem;
+        .leftHeader {
+            display: flex;
+            align-items: center;
+            button {
+                padding: 0;
+                margin: 0;
+                margin-right: 1rem;
+                background-color: $bgcolor;
+            }
+        }
+        .rightHeader {
+            img {
+                width: 2*$espaciado;
+                cursor: pointer;
+            }
+            .userIcon {
+                transform: scale(1.6);
+                cursor: pointer;
+            }
+        }
+    }
+    
+    footer {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 1rem;
+        button {
+            margin-left: $espaciado;
+            margin-right: $espaciado;
+            background-color: $bgcolor;
+        }
+        .butlateral {
+            background-color: $bgcolor;
+        }
+        .icon {
+            transform: scale(1.2);
+        }
+        .pink {
+            background-color: $botonPrincipalColor;
+            padding: 0.3rem;
+            border-radius: 100%;
+        }
+    }

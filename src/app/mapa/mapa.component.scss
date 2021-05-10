@@ -1,0 +1,33 @@
+#mapScreen {
+    .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+        a {
+            margin-top: 1.125rem;
+        }
+        .mapa {
+            margin-top: 2rem;
+            width: 70vw;
+            max-width: 50rem;
+            cursor: move;
+        }
+        .buttonDownloadElements {
+            margin: 1rem;
+            width: 11rem;
+            a {
+                padding: 0;
+                margin: 0;
+                text-decoration: none;
+                color: white;
+                button {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    width: 11rem;
+                }
+            }
+        }
+    }
+}

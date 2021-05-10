@@ -1,0 +1,84 @@
+<div class="pantalla" id="estadisticasScreen">
+    <header>
+        <div class="leftHeader">
+            <button (click)="cambiar()"><mat-icon>chevron_left</mat-icon></button>
+            <a> {{ title }} </a>
+        </div>
+        <div class="rightHeader">
+            <mat-icon class="userIcon" *ngIf="!getUsuario().foto" (click)="this.router.navigate(['perfil']);">account_circle</mat-icon>
+            <img *ngIf="getUsuario().foto" src="{{ getUsuario().foto }}" alt="Foto de perfil" (click)="this.router.navigate(['perfil']);">
+        </div>
+    </header>
+    <div class="content">
+        <p class="textgris">Seleccione una parada para conocer sus estadísticas:</p>
+        <div class="boxes">
+            <div class="busqueda" *ngIf="seleccionado.id==-1">
+                <div class="topSearch">
+                    <div class="caja inputbox">
+                        <input [(ngModel)]="search_texto" type="text" id="search" name="search" placeholder="Introduce una parada">
+                        <mat-icon>search</mat-icon>
+                    </div>
+                    <div class="anden">
+                        <select class="caja" name="tipo" [(ngModel)]="anden">
+                            <option *ngFor="let opcion of getAnden(); let i=index" [value]="i">
+                                {{ opcion }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="predicciones">
+                    <div class="caja" *ngFor="let parada of getData(); let i=index" (click)="seleccionado=parada">
+                        <p>{{ parada.nombre }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="resultado" *ngIf="seleccionado.id!=-1">
+                <div class="busquedaResultado">
+                    <div class="caja">
+                        <p>{{ seleccionado.nombre }}</p>
+                        <mat-icon>search</mat-icon>
+                    </div>
+                </div>
+                <div class="anden">
+                    <select class="caja" name="tipo" [(ngModel)]="anden">
+                        <option *ngFor="let opcion of getAnden(); let i=index" [value]="i">
+                            {{ opcion }}
+                        </option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div id="botom">
+            <div class="contenedorDias">
+                <div class="dias">
+                    <button (click)="enableDisableRuleLun()" [ngClass]="{'disactive' : lun, 'active': !lun}">LUN</button>
+                    <button (click)="enableDisableRuleMar()" [ngClass]="{'disactive' : mar, 'active': !mar}">MAR</button>
+                    <button (click)="enableDisableRuleMie()" [ngClass]="{'disactive' : mie, 'active': !mie}">MIÉ</button>
+                    <button (click)="enableDisableRuleJue()" [ngClass]="{'disactive' : jue, 'active': !jue}">JUE</button>
+                    <button (click)="enableDisableRuleVie()" [ngClass]="{'disactive' : vie, 'active': !vie}">VIE</button>
+                    <button (click)="enableDisableRuleSab()" [ngClass]="{'disactive' : sab, 'active': !sab}">SÁB</button>
+                    <button (click)="enableDisableRuleDom()" [ngClass]="{'disactive' : dom, 'active': !dom}">DOM</button>
+                </div>
+            </div>
+            <div class="imgEstadisticas" *ngIf=" semana != -1 && seleccionado.id != -1">
+                <img src="../assets/estadisticas/{{ seleccionado.foto[semana] }}">
+            </div>
+            <div class="info">
+                <div class="caja stat" *ngIf=" semana != -1 && seleccionado.id != -1">
+                    <p>Porcentaje medio de ocupación: </p>
+                    <p> {{ seleccionado.ocupacionEspera[anden][semana] }} </p>
+                </div>
+                <div class="caja stat" *ngIf=" semana != -1 && seleccionado.id != -1">
+                    <p>Tiempo de espera medio: </p>
+                    <p>{{ seleccionado.tiempoEspera[anden][semana] }} </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <footer>
+        <button class="butlateral icon" (click)="this.router.navigate(['inicio']);"><mat-icon>home</mat-icon></button>
+        <button class="icon" (click)="this.router.navigate(['trayecto']);"><mat-icon class="pink">search</mat-icon></button>
+        <button class="butlateral icon" (click)=" this.router.navigate(['mapa']); "><mat-icon>map</mat-icon></button>
+    </footer>
+</div>

@@ -1,0 +1,56 @@
+<div class="pantalla" id="inicioScreen">
+    <header>
+        <div class="leftHeader">
+            <a> {{ title }} </a>
+        </div>
+        <div class="rightHeader">
+            <mat-icon class="userIcon" *ngIf="!getUsuario().foto" (click)="this.router.navigate(['perfil']);">account_circle</mat-icon>
+            <img *ngIf="getUsuario().foto" src="{{ getUsuario().foto }}" alt="Foto de perfil" (click)="this.router.navigate(['perfil']);">
+        </div>
+    </header>
+    <div class="content">
+        <h1>SAFE SUBWAY</h1>
+        <div class="menuButtons">
+            <button class="botonSecundario" (click)="this.router.navigate(['favoritas']);">Todas mis paradas</button>
+            <button class="botonSecundario" (click)="this.router.navigate(['menu']);">Menú</button>
+        </div>
+        <!--Seccion de abono transporte-->
+        <div class="caja" id="InfoAbnono" *ngIf="getAbono()">
+            <img src="../assets/images/CTM.png" alt="Foto de Abono" class="CTM">
+            <h2>Abono transporte</h2>
+            <p class="textgris">Consulta el estado de tu abono de transporte.</p>
+            <div id="validez">
+                <h3>Validez</h3>
+                <h3>{{ getAbono().validez | date: 'dd/MM/YYYY'}}</h3>
+            </div>
+        </div>
+        <!--Seccion de paradas frecuentes-->
+        <div id="freqStops">
+            <h2>Paradas más frecuentes</h2>
+            <div id="Stops">
+                <div class="caja favstop" *ngFor="let parada of getFrecuentes(); let i=index">
+                    <div class="topInfo">
+                        <button class="fav"><mat-icon>star</mat-icon></button>
+                        <button class="linea {{parada.lineas[0].id}}">{{ parada.lineas[0].id }}</button>
+                    </div>
+                    <div class="midInfo">
+                        <h2>{{ parada.nombre }}</h2>
+                    </div>
+                    <div class="botInfo">
+                        <div class="lineamin">
+                            <div class="lineaminTop lineaColor" id="tiempo{{ parada.tiempoEspera[0][1] }}"></div>
+                            <div class="lineaminBack lineaColor"></div>
+                        </div>
+                        <button class="tiempo" diabled>{{ parada.tiempoEspera[0][1] }} min</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <button class="butlateral icon" (click)="this.router.navigate(['inicio']);"><mat-icon>home</mat-icon></button>
+        <button class="icon" (click)="this.router.navigate(['trayecto']);"><mat-icon class="pink">search</mat-icon></button>
+        <button class="butlateral icon" (click)=" this.router.navigate(['mapa']); "><mat-icon>map</mat-icon></button>
+    </footer>
+</div>

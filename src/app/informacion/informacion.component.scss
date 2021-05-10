@@ -1,0 +1,168 @@
+$botonColor: #2991f1;
+$colorGris: #C1C1C1;
+$linawidth: 23vw;
+#InformacionScreen {
+    .content {
+        .caja {
+            box-shadow: none;
+        }
+        #busqueda {
+            .caja {
+                margin-top: 1rem;
+                mat-icon {
+                    float: right;
+                    padding: 0.425rem 0.625rem;
+                }
+                input {
+                    margin: 0.625rem 0;
+                    margin-left: 2rem;
+                    background-color: #333333;
+                    color: white;
+                    border: none;
+                    width: 70%;
+                    &:focus {
+                        outline: none;
+                    }
+                }
+            }
+        }
+        #paradas {
+            p {
+                padding-bottom: 0;
+                cursor: pointer;
+                &:hover {
+                    color: $botonColor;
+                }
+            }
+            hr {
+                width: 95%;
+            }
+            mat-icon {
+                cursor: pointer;
+            }
+        }
+        #favoritas {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            .caja {
+                cursor: pointer;
+                height: 2.3rem;
+                margin-top: 1rem;
+                margin-right: 1rem;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 0 0.75rem;
+                p {
+                    padding: 0;
+                    margin: 0.5rem;
+                }
+                p:hover {
+                    color: $botonColor;
+                }
+            }
+        }
+        #informacion {
+            #lineas {
+                margin-top: 1rem;
+                .topInfo {
+                    display: flex;
+                    align-items: center;
+                    button {
+                        width: 4rem;
+                        height: 4rem;
+                        border-radius: 0.225rem;
+                        font-size: 2rem;
+                        margin: 1rem;
+                        padding: 0;
+                        cursor: default;
+                    }
+                    h2 {
+                        padding: 0rem;
+                    }
+                    .L1 {
+                        background-color: rgb(88, 206, 245);
+                    }
+                    .L2 {
+                        background-color: red;
+                    }
+                    .L3 {
+                        background-color: #EECF10;
+                    }
+                }
+                .lowInfo {
+                    padding-bottom: 1rem;
+                    p {
+                        margin: 0;
+                        font-size: 1.1rem;
+                    }
+                    .informacion {
+                        display: flex;
+                        align-items: center;
+                        button {
+                            margin: 0 1rem 0 0;
+                            width: 5.5rem;
+                            max-width: 7rem;
+                            height: auto;
+                            padding: 0.5rem;
+                            font-size: 0.8rem;
+                            cursor: default;
+                        }
+                        .actual {
+                            background-color: $botonColor;
+                        }
+                        .siguiente {
+                            background-color: $colorGris;
+                        }
+                        .lineamin {
+                            max-height: 1.7rem;
+                            margin-left: 1.5rem;
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            width: 63%;
+                            .lineaColor {
+                                width: $linawidth;
+                                border-radius: 1rem;
+                                position: absolute;
+                                height: 1rem;
+                            }
+                            .lineaminTop {
+                                z-index: 2;
+                                background-color: $botonColor;
+                            }
+                            .lineaminBack {
+                                z-index: 1;
+                                background-color: $colorGris;
+                            }
+                            #tiempo1 {
+                                width: $linawidth - 22;
+                            }
+                            #tiempo3 {
+                                width: $linawidth - 17;
+                            }
+                            #tiempo6 {
+                                width: $linawidth - 7;
+                            }
+                            #tiempo4 {
+                                width: $linawidth - 13;
+                            }
+                            #tiempo5 {
+                                width: $linawidth - 10;
+                            }
+                            #tiempo2 {
+                                width: $linawidth - 20;
+                            }
+                            #tiempo7 {
+                                width: $linawidth - 4;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

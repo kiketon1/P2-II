@@ -1,0 +1,152 @@
+$espaciado:1rem;
+$botonColor: #2991f1;
+$colorGris: #C1C1C1;
+$linawidth: 23vw;
+#inicioScreen {
+    .content {
+        margin-bottom: 2rem;
+        .menuButtons {
+            display: flex;
+            justify-content: space-around;
+            button {
+                margin-left: 4vw;
+            }
+        }
+        button {
+            width: 12rem;
+        }
+        img {
+            float: left;
+            margin-right: 1rem;
+        }
+        #InfoAbnono {
+            h2 {
+                padding: 1.5rem;
+            }
+            .CTM {
+                width: 8rem;
+            }
+            #validez {
+                margin-top: 0.5rem;
+                display: flex;
+                justify-content: space-between;
+            }
+        }
+        #freqStops {
+            margin-top: 2*$espaciado;
+            #Stops {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                .favstop {
+                    margin-top: 1rem;
+                    width: 40vw;
+                    display: flex;
+                    flex-direction: column;
+                    .topInfo {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        margin-top: $espaciado;
+                        margin-right: $espaciado;
+                        margin-left: $espaciado;
+                        //Se encarga de colocar la estrella
+                        .favizq {
+                            margin-left: 0.4rem;
+                            width: 1.5*$espaciado;
+                            cursor: default;
+                        }
+                        .linea {
+                            width: 3*$espaciado;
+                            padding-left: 0.7rem;
+                            cursor: default;
+                        }
+                        .L1 {
+                            background-color: rgb(88, 206, 245);
+                            padding-left: 0.95rem;
+                        }
+                        .L2 {
+                            background-color: red;
+                            padding-left: 0.95rem;
+                        }
+                        .L3 {
+                            background-color: #EECF10;
+                            padding-left: 0.95rem;
+                        }
+                        .fav {
+                            border-radius: 1rem;
+                            background-color: #2991F1;
+                            width: 2.5rem;
+                            height: 2.5rem;
+                            padding: 0.188rem 0 0 0;
+                            cursor: default;
+                        }
+                    }
+                    .midInfo {
+                        h2 {
+                            padding: 1rem;
+                        }
+                    }
+                    .botInfo {
+                        padding-left: 0.5rem;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        .lineamin {
+                            max-height: 1.7rem;
+                            padding-bottom: 1.9rem;
+                            width: 63%;
+                            .lineaColor {
+                                width: $linawidth;
+                                border-radius: 1rem;
+                                position: absolute;
+                                height: 1rem;
+                            }
+                            .lineaminTop {
+                                z-index: 2;
+                                background-color: $botonColor;
+                            }
+                            .lineaminBack {
+                                z-index: 1;
+                                background-color: $colorGris;
+                            }
+                            #tiempo3 {
+                                width: $linawidth - 17;
+                            }
+                            #tiempo6 {
+                                width: $linawidth - 7;
+                            }
+                            #tiempo4 {
+                                width: $linawidth - 13;
+                            }
+                            #tiempo5 {
+                                width: $linawidth - 10;
+                            }
+                            #tiempo2 {
+                                width: $linawidth - 20;
+                            }
+                            #tiempo1 {
+                                width: $linawidth - 21;
+                            }
+                            #tiempo7 {
+                                width: $linawidth - 4;
+                            }
+                            #tiempo8 {
+                                width: $linawidth;
+                            }
+                        }
+                        .tiempo {
+                            width: 37%;
+                            max-width: 7rem;
+                            height: auto;
+                            padding: 0.5rem;
+                            background: $botonColor;
+                            font-size: 0.8rem;
+                            cursor: default;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

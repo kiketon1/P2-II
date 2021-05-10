@@ -1,0 +1,81 @@
+<div class="pantalla" id="InformacionScreen">
+    <header>
+        <div class="leftHeader">
+            <button (click)="cambiar()"><mat-icon>chevron_left</mat-icon></button>
+            <a> {{ title }} </a>
+        </div>
+        <div class="rightHeader">
+            <mat-icon class="userIcon" *ngIf="!getUsuario().foto" (click)="this.router.navigate(['perfil']);">account_circle</mat-icon>
+            <img *ngIf="getUsuario().foto" src="{{ getUsuario().foto }}" alt="Foto de perfil" (click)="this.router.navigate(['perfil']);">
+        </div>
+    </header>
+
+    <div class="content">
+        <div id="busqueda" *ngIf="seleccionado.id==-1">
+
+            <div class="caja">
+                <mat-icon>search</mat-icon>
+                <input [(ngModel)]="search_texto" type="text" id="search" name="search" placeholder="Introduce una parada">
+            </div>
+
+            <div id="favoritas">
+                <div class="caja" *ngFor="let parada of getFrecuentes(); let i=index" (click)="seleccionado=parada">
+                    <p>{{ parada.nombre }}</p>
+                </div>
+            </div>
+
+            <div id="paradas" class="caja">
+                <div *ngFor="let parada of getData(); let i=index" (click)="seleccionado=parada">
+                    <mat-icon>chevron_right</mat-icon>
+                    <p>{{ parada.nombre }}</p>
+                    <hr>
+                </div>
+            </div>
+        </div>
+
+        <div id="informacion" *ngIf="seleccionado.id != -1">
+
+            <div class="caja">
+                <p class="textgris">{{ seleccionado.nombre }}</p>
+            </div>
+
+            <div id="lineas" class="caja lin" *ngFor="let linea of seleccionado.lineas; let i=index">
+                <div class="topInfo">
+                    <button type="button" class="linea {{linea.id}}">{{ linea.id }}</button>
+                    <div>
+                        <h2>{{ linea.inicio.toString() | uppercase }}</h2>
+                        <h2>{{ linea.final.toString() | uppercase }}</h2>
+                    </div>
+                </div>
+                <div class="lowInfo">
+                    <p class="textgris">Dirección {{ linea.inicio }}</p>
+                    <div class="informacion">
+                        <div class="lineamin">
+                            <div class="lineaminTop lineaColor" id="tiempo{{ seleccionado.tiempoEspera[0][i*2] }}"></div>
+                            <div class="lineaminBack lineaColor"></div>
+                        </div>
+                        <button class="actual" disabled>{{ seleccionado.tiempoEspera[0][i*2] }} min</button>
+                        <button class="actual" disabled>{{ seleccionado.ocupacionEspera[0][i*2] }}%</button>
+                        <button class="siguiente" disabled>{{ seleccionado.tiempoEspera[0][i*2] + 6 }} min</button>
+                    </div>
+                    <p class="textgris">Dirección {{ linea.final }}</p>
+                    <div class="informacion">
+                        <div class="lineamin">
+                            <div class="lineaminTop lineaColor" id="tiempo{{ seleccionado.tiempoEspera[1][i*2+1] }}"></div>
+                            <div class="lineaminBack lineaColor"></div>
+                        </div>
+                        <button class="actual" disabled>{{ seleccionado.tiempoEspera[1][i*2+1] }} min</button>
+                        <button class="actual" disabled>{{ seleccionado.ocupacionEspera[1][i*2+1] }}%</button>
+                        <button class="siguiente" disabled>{{ seleccionado.tiempoEspera[1][i*2+1] + 6 }} min</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <button class="butlateral icon" (click)="this.router.navigate(['inicio']);"><mat-icon>home</mat-icon></button>
+        <button class="icon" (click)="this.router.navigate(['trayecto']);"><mat-icon class="pink">search</mat-icon></button>
+        <button class="butlateral icon" (click)=" this.router.navigate(['mapa']); "><mat-icon>map</mat-icon></button>
+    </footer>
+</div>

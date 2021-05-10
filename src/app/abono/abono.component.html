@@ -1,0 +1,120 @@
+<div class="pantalla" id="abonoScreen">
+    <header>
+        <div class="leftHeader">
+            <button (click)="this.router.navigate(['menu']);"><mat-icon>chevron_left</mat-icon></button>
+            <a> {{ title }} </a>
+        </div>
+        <div class="rightHeader">
+            <mat-icon class="userIcon" *ngIf="!getUsuario().foto" (click)="this.router.navigate(['perfil']);">account_circle</mat-icon>
+            <img *ngIf="getUsuario().foto" src="{{ getUsuario().foto }}" alt="Foto de perfil" (click)="this.router.navigate(['perfil']);">
+        </div>
+    </header>
+
+    <div class="content">
+        <div class="abono">
+            <mat-icon class="icon">contact_mail</mat-icon>
+            <h2>Abono Mensual</h2>
+            <p class="textgris">Obtenga información actualizada sobre su tarjeta de transporte público personal.</p>
+            <div class="caja" id="InfoAbono" *ngIf="getAbono().id">
+                <img src="../assets/images/CTM.png" alt="Foto de logo CRTM" class="CTM">
+                <div class="userIDinfo">
+                    <h2>{{ getUsuario().nombre }} {{ getUsuario().apellidos }}</h2>
+                    <p class="textgris">{{ getAbono().id }}</p>
+                    <p class="textgris">Expendición tarjeta: {{ getAbono().expedicion | date: 'dd/MM/YYYY'}}</p>
+                </div>
+
+                <div class="userInfo">
+                    <div class="izquierda">
+                        <div class="fotos">
+                            <mat-icon class="userIcon" *ngIf="!getUsuario().foto">account_circle</mat-icon>
+                            <img class="perfil" *ngIf="getUsuario().foto" src="{{ getUsuario().foto }}" alt="Foto de perfil" (click)="this.router.navigate(['perfil']);">
+                            <img src=" {{ getAbono().qr }} " alt="Foto del QR">
+                        </div>
+
+                        <h3>Validez: {{ getAbono().validez | date: 'dd/MM/YYYY'}}</h3>
+                        <h3>Último Uso: {{ getAbono().ultimoUso | date: 'dd/MM/YYYY'}}</h3>
+                        <h3>Última Recarga: {{ getAbono().ultimaRecarga | date: 'dd/MM/YYYY'}}</h3>
+                        <button class="botonSecundario" (click)="eliminar('Abono')">Eliminar Abono</button>
+                    </div>
+                    <div class="transportes">
+                        <img src="../assets/images/cercanias.png">
+                        <img src="../assets/images/bus.png">
+                        <img src="../assets/images/metro.png">
+                        <img src="../assets/images/metroligero.png">
+                    </div>
+                </div>
+            </div>
+
+            <div class="caja" id="noAbono1" *ngIf="!getAbono().id && !nuevoAbono">
+                <h3>No se ha encontrado nigún abono</h3>
+                <button class="botonSecundario" (click)="nuevoAbono=true">Añadir Abono</button>
+            </div>
+
+            <div class="caja" id="nuevoAbono" *ngIf="nuevoAbono">
+                <h3>Introduce el identificador del abono:</h3>
+                <input [(ngModel)]="nuevoID">
+                <button class="botonSecundario" (click)="nuevo('Abono')">Añadir Abono</button>
+            </div>
+
+            <div class="nfc" *ngIf="getAbono().id">
+                <button class="botonSecundario">Activar NFC</button>
+            </div>
+        </div>
+
+        <div class="abono">
+            <mat-icon class="icon">contact_mail</mat-icon>
+            <h2>Tarjetas de Transporte</h2>
+            <p class="textgris">Obtenga información actualizada sobre tarjetas de transporte público de uso colectivo.</p>
+            <div class="caja" id="InfoAbono" *ngIf="getTarjeta().id">
+                <img src="../assets/images/CTM.png" alt="Foto de logo CRTM" class="CTM">
+                <div class="userIDinfo">
+                    <h2>{{ getUsuario().nombre }} {{ getUsuario().apellidos }}</h2>
+                    <p class="textgris">{{ getTarjeta().id }}</p>
+                    <p class="textgris">Expendición tarjeta: {{ getTarjeta().expedicion | date: 'dd/MM/YYYY'}}</p>
+                </div>
+
+                <div class="userInfo">
+                    <div class="izquierda">
+                        <div class="fotos">
+                            <mat-icon class="userIcon" *ngIf="!getUsuario().foto">account_circle</mat-icon>
+                            <img class="perfil" *ngIf="getUsuario().foto" src="{{ getUsuario().foto }}" alt="Foto de perfil" (click)="this.router.navigate(['perfil']);">
+                            <img src=" {{ getTarjeta().qr }} " alt="Foto del QR">
+                        </div>
+
+                        <h3>Viajes restantes: {{ getTarjeta().viajes }}</h3>
+                        <h3>Último Uso: {{ getTarjeta().ultimoUso | date: 'dd/MM/YYYY'}}</h3>
+                        <h3>Última Recarga: {{ getTarjeta().ultimaRecarga | date: 'dd/MM/YYYY'}}</h3>
+                        <button class="botonSecundario" (click)="eliminar('Tarjeta')">Eliminar Tarjeta</button>
+                    </div>
+                    <div class="transportes">
+                        <img src="../assets/images/cercanias.png">
+                        <img src="../assets/images/bus.png">
+                        <img src="../assets/images/metro.png">
+                        <img src="../assets/images/metroligero.png">
+                    </div>
+                </div>
+            </div>
+
+            <div class="caja" id="noAbono2" *ngIf="!getTarjeta().id && !nuevaTarjeta">
+                <h3>No se ha encontrado niguna tarjeta</h3>
+                <button class="botonSecundario" (click)="nuevaTarjeta=true">Añadir Tarjeta</button>
+            </div>
+
+            <div class="caja" id="nuevaTarjeta" *ngIf="nuevaTarjeta">
+                <h3>Introduce el identificador de la tarjeta:</h3>
+                <input [(ngModel)]="nuevoID">
+                <button class="botonSecundario" (click)="nuevo('Tarjeta')">Añadir Tarjeta</button>
+            </div>
+
+            <div class="nfc" *ngIf="getTarjeta().id">
+                <button class="botonSecundario">Activar NFC</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <button class="butlateral icon" (click)="this.router.navigate(['inicio']);"><mat-icon>home</mat-icon></button>
+        <button class="icon" (click)="this.router.navigate(['trayecto']);"><mat-icon class="pink">search</mat-icon></button>
+        <button class="butlateral icon" (click)=" this.router.navigate(['mapa']); "><mat-icon>map</mat-icon></button>
+    </footer>
+</div>

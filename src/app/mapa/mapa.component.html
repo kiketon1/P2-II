@@ -1,0 +1,32 @@
+<div class="pantalla" id="mapScreen">
+    <header>
+        <div class="leftHeader">
+            <a> {{ title }} </a>
+        </div>
+        <div class="rightHeader">
+            <mat-icon class="userIcon" *ngIf="!getUsuario().foto" (click)="this.router.navigate(['perfil']);">account_circle</mat-icon>
+            <img *ngIf="getUsuario().foto" src="{{ getUsuario().foto }}" alt="Foto de perfil" (click)="this.router.navigate(['perfil']);">
+        </div>
+    </header>
+    <div class="content">
+        <a>Desliza sobre el mapa para hacer zoom</a>
+        <lib-ngx-image-zoom class="mapa" [thumbImage]=myThumbnail [fullImage]=myFullresImage></lib-ngx-image-zoom>
+        <div class="buttonDownloadElements">
+            <a href="../assets/images/mapametro.png" download="MapaMetroMadrid">
+                <button action="../assets/images/mapametro.png" class="botonSecundario descargaMapa">
+                    <!--button mat flecha descarga-->
+                    <mat-icon>cloud_download</mat-icon>
+                    <!--letters-->
+                    Descargar Mapa
+                </button>
+            </a>
+        </div>
+    </div>
+
+
+    <footer>
+        <button class="butlateral icon " (click)="this.router.navigate([ 'inicio']);"><mat-icon>home</mat-icon></button>
+        <button class="icon" (click)="this.router.navigate([ 'trayecto']);"><mat-icon class="pink">search</mat-icon></button>
+        <button class="butlateral icon" (click)="this.router.navigate([ 'mapa']);"><mat-icon>map</mat-icon></button>
+    </footer>
+</div>

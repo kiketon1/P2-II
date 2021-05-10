@@ -1,0 +1,158 @@
+#estadisticasScreen {
+    .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .textgris {
+            text-align: center;
+        }
+        .boxes {
+            min-height: 2.5rem;
+            .busqueda {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-between;
+                .topSearch {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    .inputbox {
+                        min-height: 2rem;
+                        min-width: 13rem;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        box-shadow: none;
+                        margin-right: 0.2rem;
+                        padding-left: 1rem;
+                        padding-right: 1rem;
+                        input {
+                            background-color: #333333;
+                            color: white;
+                            border: none;
+                            width: 90%;
+                            &:focus {
+                                outline: none;
+                            }
+                        }
+                        input::placeholder {
+                            color: white;
+                        }
+                    }
+                    .anden {
+                        select {
+                            min-height: 2rem;
+                            margin-left: 0.2rem;
+                            padding-left: 1rem;
+                            padding-right: 1rem;
+                            box-shadow: none;
+                            color: white;
+                            border: 0;
+                            p {
+                                color: white;
+                            }
+                            border: none;
+                            width: 8rem;
+                            background-color: #333333;
+                            border: none;
+                            option {
+                                color: white;
+                            }
+                        }
+                    }
+                }
+                .predicciones {
+                    .caja {
+                        box-shadow: none;
+                    }
+                    width: 90%;
+                }
+            }
+            .resultado {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                .busquedaResultado {
+                    width: 15rem;
+                    margin-right: 0.5rem;
+                    .caja {
+                        min-height: 2rem;
+                        box-shadow: none;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        padding-left: 1rem;
+                        padding-right: 1rem;
+                        p {
+                            margin: 0;
+                            padding: 0;
+                        }
+                    }
+                }
+                .anden {
+                    margin-left: 0.5rem;
+                    .caja {
+                        color: white;
+                        padding-left: 1rem;
+                        padding-right: 1rem;
+                        width: 8rem;
+                        height: 2rem;
+                        box-shadow: none;
+                        p {
+                            color: white;
+                        }
+                    }
+                }
+            }
+        }
+        #botom {
+            .contenedorDias {
+                align-items: center;
+                justify-content: space-between;
+                display: flex;
+                margin-top: 1.5rem;
+                .dias {
+                    .disactive {
+                        background-color: #6C0676;
+                    }
+                    .active {
+                        text-decoration: underline;
+                        text-decoration-thickness: 0.5em;
+                        text-decoration-color: #2991f1;
+                        background-color: #6C0676;
+                        //Tenemos opcion de thickness o cambiar de color el boton
+                    }
+                }
+            }
+            .imgEstadisticas {
+                img {
+                    margin-left: 1rem;
+                    width: 90%;
+                }
+            }
+            .info {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                .caja {
+                    margin-top: 1rem;
+                    margin-left: 1rem;
+                    box-shadow: none;
+                    width: 22.75rem;
+                    font-size: 1.3rem;
+                    padding-left: 1rem;
+                    padding-right: 1rem;
+                    p {
+                        margin: 0.3rem;
+                    }
+                }
+                .stat {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                }
+            }
+        }
+    }
+}

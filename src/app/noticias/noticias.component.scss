@@ -1,0 +1,54 @@
+$cajaColor: #333333;
+$global: 1rem;
+#newsScreen {
+    .content {
+        #filtro {
+            background-color: $cajaColor;
+            border-radius: 0.938rem;
+            margin-top: $global;
+            padding: 0.75rem;
+            text-align: center;
+            select {
+                margin-left: $global;
+                border-radius: 0.938rem;
+                width: 12rem;
+                height: 1.5rem;
+                font-size: $global;
+                background-color: $cajaColor;
+                border: none;
+                color: white;
+                width: 95%;
+            }
+        }
+        .caja {
+            text-align: justify;
+            .principal {
+                display: flex;
+                margin-top: $global * 2;
+                padding: 0.75rem;
+                cursor: pointer;
+                justify-content: space-between;
+                .parteizq {
+                    display: flex;
+                    img {
+                        width: $global * 6;
+                    }
+                    h3 {
+                        padding: ($global/2) 0 $global $global;
+                    }
+                }
+                .partedch {
+                    display: flex;
+                    p {
+                        align-self: flex-end;
+                        margin-right: 0;
+                        padding: 0;
+                    }
+                }
+            }
+            p {
+                margin-top: 0;
+            }
+        }
+    }
+}

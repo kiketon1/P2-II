@@ -1,0 +1,106 @@
+<div class="pantalla" id="trayectoScreen" *ngIf="!mostrarTrayecto">
+    <header>
+        <div class="leftHeader">
+            <a> {{ title }} </a>
+        </div>
+        <div class="rightHeader">
+            <mat-icon class="userIcon" *ngIf="!getUsuario().foto" (click)="this.router.navigate(['perfil']);">account_circle</mat-icon>
+            <img *ngIf="getUsuario().foto" src="{{ getUsuario().foto }}" alt="Foto de perfil" (click)="this.router.navigate(['perfil']);">
+        </div>
+    </header>
+    <div class="content">
+        <div id="busqueda">
+            <h2>Desde:</h2>
+
+            <div class="caja">
+                <mat-icon>search</mat-icon>
+                <input [(ngModel)]="search_inicio" type="text" id="search" name="search" placeholder="Introduce una parada">
+            </div>
+
+            <div id="paradas" class="caja">
+                <div *ngFor="let parada of getData('inicio'); let i=index" (click)="(search_inicio=parada.nombre.toString()) && (inicio=parada)">
+                    <mat-icon>chevron_right</mat-icon>
+                    <p>{{ parada.nombre }}</p>
+                    <hr>
+                </div>
+            </div>
+
+            <h2>Hasta:</h2>
+
+            <div class="caja">
+                <mat-icon>search</mat-icon>
+                <input [(ngModel)]="search_final" type="text" id="search" name="search" placeholder="Introduce una parada">
+            </div>
+
+            <div id="paradas" class="caja">
+                <div *ngFor="let parada of getData('final'); let i=index" (click)="(search_final=parada.nombre.toString()) && (destino=parada)">
+                    <mat-icon>chevron_right</mat-icon>
+                    <p>{{ parada.nombre }}</p>
+                    <hr>
+                </div>
+            </div>
+
+            <h2>Filtro:</h2>
+
+            <div id="filtro" class="filtro">
+                <select name="tipo" [(ngModel)]="filtroSeleccionado">
+                   <option *ngFor="let filtro of filtros; let i=index" [value]="i">
+                       {{ filtro }}
+                   </option>
+                </select>
+            </div>
+
+            <button id="comollegar" class="botonSecundario" (click)="cambiar()">Como llegar</button>
+        </div>
+    </div>
+
+    <footer>
+        <button class="butlateral icon" (click)="this.router.navigate(['inicio']);"><mat-icon>home</mat-icon></button>
+        <button class="icon" (click)="this.router.navigate(['trayecto']);"><mat-icon class="pink">search</mat-icon></button>
+        <button class="butlateral icon" (click)=" this.router.navigate(['mapa']); "><mat-icon>map</mat-icon></button>
+    </footer>
+</div>
+
+<div class="pantalla" id="comollegarScreen" *ngIf="mostrarTrayecto">
+    <header>
+        <div class="leftHeader">
+            <button (click)="mostrarTrayecto=false"><mat-icon>chevron_left</mat-icon></button>
+            <a> Como llegar </a>
+        </div>
+        <div class="rightHeader">
+            <mat-icon class="userIcon" *ngIf="!getUsuario().foto" (click)="this.router.navigate(['perfil']);">account_circle</mat-icon>
+            <img *ngIf="getUsuario().foto" src="{{ getUsuario().foto }}" alt="Foto de perfil" (click)="this.router.navigate(['perfil']);">
+        </div>
+    </header>
+    <div class="content">
+        <div id="recorrido" class="caja">
+            <div class="conjunto">
+                <mat-icon>trip_origin</mat-icon>
+                <h2>{{ inicio.nombre }}</h2>
+            </div>
+            <hr>
+            <div class="conjunto">
+                <mat-icon>place</mat-icon>
+                <h2>{{ destino.nombre }}</h2>
+            </div>
+        </div>
+        <div id="trayectos">
+            <div class="caja" *ngFor="let trayecto of getTrayectos()">
+                <div class="topInfo">
+                    <div class="lineas" *ngFor="let linea of trayecto.lineas">
+                        <button type="button" class="linea {{linea}}">{{ linea }}</button>
+                    </div>
+                    <h3>{{ trayecto.tiempoTotal }} min</h3>
+                </div>
+                <button class="botonSecundario">{{ trayecto.congestionTotal | number: '2.0-2'}}%</button>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <button class="butlateral icon" (click)="this.router.navigate(['inicio']);"><mat-icon>home</mat-icon></button>
+        <button class="icon" (click)="this.router.navigate(['trayecto']);"><mat-icon class="pink">search</mat-icon></button>
+        <button class="butlateral icon" (click)=" this.router.navigate(['mapa']); "><mat-icon>map</mat-icon></button>
+    </footer>
+</div>

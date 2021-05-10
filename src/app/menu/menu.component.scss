@@ -1,0 +1,51 @@
+$borde: #2991f1;
+$cajaColor: #333333;
+#menuScreen {
+    .content {
+        cursor: pointer;
+        .caja {
+            border: 1px solid $borde;
+            margin-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+        }
+        .menuOption {
+            box-shadow: none;
+            .general {
+                border-radius: 35%;
+                padding: 0.4rem;
+                transform: scale(0.75);
+                margin-left: 1rem;
+            }
+            .leftMenuOption {
+                display: flex;
+                align-items: center;
+                #info {
+                    background-color: #1E90FF;
+                }
+                #paradas {
+                    background-color: #7FFF62;
+                }
+                #stats {
+                    background-color: #FFAB1E;
+                }
+                #abono {
+                    background-color: #F60404;
+                }
+                #news {
+                    background-color: #C2B39A;
+                }
+                #profile {
+                    background-color: #BC62FF;
+                }
+            }
+            .rightMenuOption {
+                button {
+                    height: 0.5rem;
+                    margin-right: 0.156rem;
+                    background-color: $cajaColor;
+                }
+            }
+        }
+    }
+}

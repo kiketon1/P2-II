@@ -1,0 +1,44 @@
+<div class="pantalla" id="perfilScreen">
+    <div class="bodyPerfil">
+        <div class="content">
+            <div class="infoUser">
+                <div class="top">
+                    <a>Desde 2 abril 2020</a>
+                </div>
+                <div class="foto">
+                    <mat-icon class="userIcon" *ngIf="!getUsuario().foto" (click)="this.router.navigate(['perfil']);">account_circle</mat-icon>
+                    <img *ngIf="getUsuario().foto" src="{{ getUsuario().foto }}" alt="Foto de perfil" (click)="this.router.navigate(['perfil']);">
+                </div>
+                <div class="saveImg">
+                    <label for="file-upload" class="botonSecundario">
+                        <i class="fa fa-cloud-upload"></i> Cambiar foto
+                    </label>
+                    <input id="file-upload" type="file" accept=".jpg, .jpeg, .png" (change)="cambiarFoto()" [(ngModel)]="foto">
+                </div>
+                <div class="datosPersonales">
+                    <h1>{{ getUsuario().nombre }}</h1>
+                    <h1>{{ getUsuario().apellidos }}</h1>
+                    <p>{{ getUsuario().correo }}</p>
+                </div>
+            </div>
+
+            <div class="notificaciones">
+                <h3>Notificaciones</h3>
+                <div class="caja ">
+                    <h4>Activar Notificaciones</h4>
+                    <div class="done">
+                        <button id="boton" class="botonSecundario2" (click)="enableDisableRule()" [ngClass]="{'botonSecundario2' : notification, 'botonSecundario3': !notification}">
+                            <mat-icon>done</mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <button class="botonPrincipal" (click)="this.router.navigate(['login']);">Cerrar Sesion</button>
+        </div>
+    </div>
+    <footer>
+        <button class="butlateral icon " (click)="this.router.navigate([ 'inicio']);"><mat-icon>home</mat-icon></button>
+        <button class="icon" (click)="this.router.navigate([ 'trayecto']);"><mat-icon class="pink ">search</mat-icon></button>
+        <button class="butlateral icon" (click)="this.router.navigate([ 'mapa']);"><mat-icon>map</mat-icon></button>
+    </footer>
+</div>

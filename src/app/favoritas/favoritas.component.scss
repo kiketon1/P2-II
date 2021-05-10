@@ -1,0 +1,131 @@
+#favoritasScreen {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .content {
+        margin-top: 1rem;
+        .paradas {
+            .topInfo {
+                align-items: center;
+                justify-content: space-between;
+                .star {
+                    background-color: #2991F1;
+                    margin-right: 0.5rem;
+                    border-radius: 35%;
+                    padding: 0.25rem;
+                    transform: scale(1);
+                    margin-left: 1rem;
+                    float: left;
+                    width: 2.2rem;
+                    height: 2.2rem;
+                    cursor: default;
+                }
+                p {
+                    text-align: justify;
+                    margin: 0.75rem 0rem 0rem 3.75rem;
+                }
+            }
+            .paradasFav {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                .caja {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    margin-top: 1rem;
+                    width: 41vw;
+                    box-shadow: none;
+                    .rightPart {
+                        margin-right: 1rem;
+                        display: flex;
+                        align-items: center;
+                        button {
+                            cursor: default;
+                        }
+                        mat-icon {
+                            cursor: pointer;
+                        }
+                        .linea {
+                            margin: 0;
+                        }
+                        .L1 {
+                            background-color: rgb(88, 206, 245);
+                        }
+                        .L2 {
+                            background-color: red;
+                            padding-left: 0.95rem;
+                        }
+                        .L3 {
+                            background-color: #EECF10;
+                            padding-left: 0.95rem;
+                        }
+                        .delete {
+                            color: red;
+                        }
+                    }
+                }
+            }
+            .nuevaParadaFav {
+                margin-top: 2rem;
+                #busqueda {
+                    margin-top: 2rem;
+                    .caja {
+                        box-shadow: none;
+                        min-height: 2.5rem;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        padding-left: 1rem;
+                        padding-right: 1rem;
+                        input {
+                            background-color: #333333;
+                            color: white;
+                            border: none;
+                            width: 90%;
+                        }
+                        input:focus {
+                            outline: none;
+                        }
+                    }
+                }
+                #mostrarParadas {
+                    margin-top: 0.5rem;
+                    box-shadow: none;
+                    .sugerencia {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        padding: 0 1rem;
+                        cursor: pointer;
+                        p {
+                            margin: 0;
+                            padding: 0.5rem 0;
+                        }
+                        p:hover {
+                            color: #2991F1;
+                        }
+                        mat-icon {
+                            margin-right: 1rem;
+                        }
+                    }
+                    hr {
+                        width: 95%;
+                    }
+                }
+            }
+            .editFavButton {
+                margin-top: 2rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                .botonSecundario {
+                    align-self: center;
+                    height: 3rem;
+                    width: 15rem;
+                    font-size: 1rem;
+                }
+            }
+        }
+    }
+}

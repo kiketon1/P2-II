@@ -1,0 +1,76 @@
+<div class="pantalla" id="menuScreen">
+    <header>
+        <div class="leftHeader">
+            <button (click)="this.router.navigate(['inicio']);"><mat-icon>chevron_left</mat-icon></button>
+            <a> {{ title }} </a>
+        </div>
+        <div class="rightHeader">
+            <mat-icon class="userIcon" *ngIf="!getUsuario().foto" (click)="this.router.navigate(['perfil']);">account_circle</mat-icon>
+            <img *ngIf="getUsuario().foto" src="{{ getUsuario().foto }}" alt="Foto de perfil" (click)="this.router.navigate(['perfil']);">
+        </div>
+    </header>
+
+    <div class="content">
+        <!--Opciones del menu-->
+        <div class="caja menuOption" (click)="this.router.navigate(['informacion']);">
+            <div class="leftMenuOption">
+                <mat-icon id="info" class="general">info</mat-icon>
+                <h3>Información de Parada</h3>
+            </div>
+            <div class="rightMenuOption">
+                <button><mat-icon>chevron_right</mat-icon></button>
+            </div>
+        </div>
+        <div class="caja menuOption" (click)="this.router.navigate(['favoritas']);">
+            <div class="leftMenuOption">
+                <mat-icon id="paradas" class="general">star</mat-icon>
+                <h3>Mis Paradas</h3>
+            </div>
+            <div class="rightMenuOption">
+                <button><mat-icon>chevron_right</mat-icon></button>
+            </div>
+        </div>
+        <div class="caja menuOption" (click)="this.router.navigate(['estadisticas']);">
+            <div class="leftMenuOption">
+                <mat-icon id="stats" class="general">equalizer</mat-icon>
+                <h3>Estadísticas</h3>
+            </div>
+            <div class="rightMenuOption">
+                <button><mat-icon>chevron_right</mat-icon></button>
+            </div>
+        </div>
+        <div class="caja menuOption" (click)="this.router.navigate(['abono']);">
+            <div class="leftMenuOption">
+                <mat-icon id="abono" class="general">contact_mail</mat-icon>
+                <h3>Abono de transporte</h3>
+            </div>
+            <div class="rightMenuOption">
+                <button><mat-icon>chevron_right</mat-icon></button>
+            </div>
+        </div>
+        <div class="caja menuOption" (click)="this.router.navigate(['noticias']);">
+            <div class="leftMenuOption">
+                <mat-icon id="news" class="general">insert_drive_file</mat-icon>
+                <h3>Noticias y Novedades</h3>
+            </div>
+            <div class="rightMenuOption">
+                <button><mat-icon>chevron_right</mat-icon></button>
+            </div>
+        </div>
+        <div class="caja menuOption" (click)="this.router.navigate(['perfil']);">
+            <div class="leftMenuOption">
+                <mat-icon id="profile" class="general">person</mat-icon>
+                <h3>Perfil</h3>
+            </div>
+            <div class="rightMenuOption">
+                <button><mat-icon>chevron_right</mat-icon></button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <button class="butlateral icon " (click)="this.router.navigate(['inicio']);"><mat-icon>home</mat-icon></button>
+        <button class="icon" (click)="this.router.navigate(['trayecto']);"><mat-icon class="pink">search</mat-icon></button>
+        <button class="butlateral icon" (click)="this.router.navigate(['mapa']);"><mat-icon>map</mat-icon></button>
+    </footer>
+</div>

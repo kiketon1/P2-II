@@ -1,0 +1,42 @@
+<div class="pantalla" id="newsScreen">
+    <header>
+        <div class="leftHeader">
+            <button (click)="this.router.navigate([ 'menu']);"><mat-icon>chevron_left</mat-icon></button>
+            <a> {{ title }} </a>
+        </div>
+        <div class="rightHeader">
+            <mat-icon class="userIcon" *ngIf="!getUsuario().foto" (click)="this.router.navigate(['perfil']);">account_circle</mat-icon>
+            <img *ngIf="getUsuario().foto" src="{{ getUsuario().foto }}" alt="Foto de perfil" (click)="this.router.navigate(['perfil']);">
+        </div>
+    </header>
+    <div class="content">
+        <div id="filtro" class="filtro">
+
+            <select name="tipo" [(ngModel)]="seleccionado">
+               <option *ngFor="let filtro of getFiltros(); let i=index" [value]="i">
+                   {{ filtro }}
+               </option>
+            </select>
+        </div>
+
+        <div class="caja" *ngFor='let noticia of getNoticias(); let i=index'>
+            <div class="principal" (click)="expandir(noticia.id)">
+                <div class="parteizq">
+                    <img src="{{ noticia.foto }}" alt="Noticia {{ noticia.id }}">
+                    <h3>{{ noticia.titulo }}</h3>
+                </div>
+
+                <div class="partedch">
+                    <p class="abajo">{{ noticia.fecha | date: 'dd/MM/YYYY' }}</p>
+                </div>
+            </div>
+            <p *ngIf="mostrar[noticia.id]">{{ noticia.contenido }}</p>
+        </div>
+    </div>
+
+    <footer>
+        <button class="butlateral icon " (click)="this.router.navigate([ 'inicio']);"><mat-icon>home</mat-icon></button>
+        <button class="icon" (click)="this.router.navigate([ 'trayecto']);"><mat-icon class="pink ">search</mat-icon></button>
+        <button class="butlateral icon" (click)="this.router.navigate([ 'mapa']);"><mat-icon>map</mat-icon></button>
+    </footer>
+</div>
